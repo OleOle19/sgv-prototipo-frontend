@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+:root {
+  font-family: "Poppins", system-ui, sans-serif;
+  color: #172432;
+  background: #f3f6f8;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --brand-blue: #004373;
+  --brand-blue-deep: #062f4f;
+  --brand-blue-soft: #e8f2f8;
+  --brand-yellow: #ffb025;
+  --brand-yellow-soft: #fff5df;
+  --ink: #172432;
+  --muted: #657381;
+  --line: #dfe6eb;
+}
+
+* { box-sizing: border-box; }
+html { background: #f3f6f8; overflow-x: hidden; }
+body { margin: 0; min-width: 320px; min-height: 100vh; overflow-x: hidden; }
+#root { min-width: 0; min-height: 100vh; }
+button, input, select { font: inherit; }
+button, [role="button"] { -webkit-tap-highlight-color: transparent; }
+::selection { color: white; background: var(--brand-blue); }
+.font-display { font-family: "Montserrat", system-ui, sans-serif; }
+.scrollbar-thin { scrollbar-color: #bac8d2 transparent; scrollbar-width: thin; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up { animation: fade-up 280ms ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

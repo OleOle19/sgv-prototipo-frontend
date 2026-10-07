@@ -6,11 +6,11 @@ import '@fontsource/montserrat/latin-700.css'
 import '@fontsource/poppins/latin-400.css'
 import '@fontsource/poppins/latin-500.css'
 import '@fontsource/poppins/latin-600.css'
-import './index.css'
-import App from './App.tsx'
+import './estilos.css'
+import Aplicacion from './Aplicacion.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <Aplicacion />
   </StrictMode>,
 )

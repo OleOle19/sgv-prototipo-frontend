@@ -1,5 +1,5 @@
 {
-  "name": "incubunt",
+  "name": "sgv-prototipo-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,8 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "test:smoke": "node scripts/smoke-test.mjs",
-    "visual:qa": "node scripts/visual-qa.mjs",
+    "verificar": "npm run lint && npm run build",
+    "prueba:funcional": "node scripts/prueba-funcional.mjs",
+    "capturas:visuales": "node scripts/capturas-visuales.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

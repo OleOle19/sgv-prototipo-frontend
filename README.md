@@ -24,7 +24,7 @@ npm run dev
 
 Vite mostrará una dirección local, normalmente `http://localhost:5173`.
 
-El repositorio es privado: la cuenta que vaya a clonarlo debe haber aceptado primero la invitación como colaboradora. Para descargar actualizaciones posteriores puede ejecutar `git pull` dentro de la carpeta.
+El repositorio es público, así que cualquier persona puede clonarlo sin autenticarse. Para subir cambios sí necesita permiso de colaboración. Para descargar actualizaciones posteriores puede ejecutar `git pull` dentro de la carpeta.
 
 ## Flujo de colaboración sugerido
 
@@ -43,11 +43,31 @@ La rama `main` debe conservar siempre una versión compilable de la demo.
 
 ```bash
 npm run dev
+npm run verificar
 npm run build
 npm run lint
-npm run test:smoke
-npm run visual:qa
+npm run prueba:funcional
+npm run capturas:visuales
 npm run preview
+```
+
+`prueba:funcional` y `capturas:visuales` esperan que `npm run dev` esté ejecutándose en otra terminal.
+Los scripts buscan Edge o Chrome automáticamente. Si el navegador está instalado en otra ruta, puedes definir la variable `NAVEGADOR_EJECUTABLE`.
+
+## Estructura del proyecto
+
+```text
+src/
+├── componentes/   Piezas reutilizables de interfaz y voluntarios
+├── datos/         Datos ficticios y matriz de permisos de la demo
+├── estructuras/   Distribución general, barra lateral y cabecera
+├── paginas/       Vistas completas del directorio y la ficha
+├── tipos/         Contratos TypeScript del dominio
+└── utilidades/    Funciones compartidas sin interfaz
+
+docs/              Decisiones y guía de implementación
+scripts/           Pruebas funcionales y capturas automatizadas
+public/            Recursos estáticos públicos
 ```
 
 ## Recorrido sugerido para la demostración
@@ -59,7 +79,7 @@ npm run preview
 5. Comprobar que el directorio se limita a TI y oculta DNI, datos sensibles y sanciones.
 6. Reducir la ventana para revisar la versión móvil.
 
-La ficha de Andrea también puede abrirse directamente con `?volunteer=VOL-0248`.
+La ficha de Andrea también puede abrirse directamente con `?voluntario=VOL-0248`.
 
 ## Stack
 
@@ -70,8 +90,10 @@ La ficha de Andrea también puede abrirse directamente con `?volunteer=VOL-0248`
 - Lucide React
 - Montserrat y Poppins empaquetadas localmente
 
-El prototipo no incorpora Inertia todavía porque no existe el servidor Laravel. Las páginas reciben objetos tipados que posteriormente pueden convertirse en props de Inertia sin cambiar su estructura visual.
+El prototipo no incorpora Inertia todavía porque no existe el servidor Laravel. Las páginas reciben objetos tipados que posteriormente pueden convertirse en propiedades de Inertia sin cambiar su estructura visual.
+
+Los identificadores propios del proyecto están escritos en español. Permanecen en inglés únicamente las APIs y atributos exigidos por React, TypeScript, HTML y las librerías externas, por ejemplo `useState`, `className`, `onClick` o `data` en la configuración de TanStack Table.
 
 La marca del lateral es un identificador textual del prototipo, no un isologo oficial. Debe sustituirse por el recurso aprobado cuando el equipo entregue los archivos de marca definitivos.
 
-Consulta `GUIA_DE_TIPEO.md` para reconstruirlo en un orden de implementación realista y `DECISIONES.md` para los supuestos pendientes de validación.
+Consulta [`docs/GUIA_DE_TIPEO.md`](docs/GUIA_DE_TIPEO.md) para reconstruirlo en un orden de implementación realista y [`docs/DECISIONES.md`](docs/DECISIONES.md) para los supuestos pendientes de validación.

@@ -1,4 +1,4 @@
-import * as Pestanas from '@radix-ui/react-tabs'
+import * as Pestañas from '@radix-ui/react-tabs'
 import {
   Activity, ArrowLeft, BriefcaseBusiness, CalendarDays, Clock3,
   FileText, GraduationCap, HeartPulse, LockKeyhole, Mail, MapPin, Phone,
@@ -66,20 +66,20 @@ function GraficoHoras({ voluntario }: { voluntario: DetalleVoluntario }) {
   )
 }
 
-const clasesPestana = 'relative flex min-w-max cursor-pointer items-center gap-2 px-1 pb-3 text-sm font-medium text-[#71808d] outline-none transition hover:text-[#004373] data-[state=active]:font-semibold data-[state=active]:text-[#004373] after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:rounded-full after:bg-[#ffb025] after:opacity-0 data-[state=active]:after:opacity-100'
+const clasesPestaña = 'relative flex min-w-max cursor-pointer items-center gap-2 px-1 pb-3 text-sm font-medium text-[#71808d] outline-none transition hover:text-[#004373] data-[state=active]:font-semibold data-[state=active]:text-[#004373] after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:rounded-full after:bg-[#ffb025] after:opacity-0 data-[state=active]:after:opacity-100'
 
 export function PaginaFichaVoluntario({ voluntario, permisos, alVolver }: PropiedadesFicha) {
   const valorPrivado = (valor: string) => permisos.puedeVerDatosSensibles ? valor : 'Información protegida'
 
   return (
     <div className="animate-fade-up space-y-5">
-      <Boton variante="fantasma" tamano="pequeno" className="-ml-2" onClick={alVolver}><ArrowLeft className="size-4" /> Volver a miembros</Boton>
+      <Boton variante="fantasma" tamaño="pequeño" className="-ml-2" onClick={alVolver}><ArrowLeft className="size-4" /> Volver a miembros</Boton>
 
       <section className="relative overflow-hidden rounded-2xl bg-[#004373] px-5 py-6 text-white shadow-[0_14px_30px_rgba(0,67,115,.16)] md:px-7 md:py-7">
         <div className="pointer-events-none absolute -right-20 -top-28 size-72 rounded-full border-[42px] border-white/5" />
         <div className="pointer-events-none absolute -bottom-16 right-24 size-36 rounded-full bg-[#ffb025]/10 blur-2xl" />
         <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center">
-          <FotoPerfil iniciales={voluntario.iniciales} tamano="grande" clases="border-4 border-white/15 bg-white text-[#004373]" />
+          <FotoPerfil iniciales={voluntario.iniciales} tamaño="grande" clases="border-4 border-white/15 bg-white text-[#004373]" />
           <div className="min-w-0 flex-1">
             <div className="mb-2 flex flex-wrap items-center gap-2"><InsigniaEstado estado={voluntario.estado} /><span className="rounded-full bg-white/10 px-2.5 py-1 text-xs font-medium text-sky-50">{voluntario.id}</span></div>
             <h2 className="font-display text-2xl font-bold tracking-[-.025em] md:text-[30px]">{voluntario.nombre}</h2>
@@ -99,17 +99,17 @@ export function PaginaFichaVoluntario({ voluntario, permisos, alVolver }: Propie
         </div>
       )}
 
-      <Pestanas.Root defaultValue="identificacion" className="rounded-2xl border border-[#dfe6eb] bg-white shadow-[0_1px_2px_rgba(20,45,63,.03)]">
+      <Pestañas.Root defaultValue="identificacion" className="rounded-2xl border border-[#dfe6eb] bg-white shadow-[0_1px_2px_rgba(20,45,63,.03)]">
         <div className="overflow-x-auto border-b border-[#e4eaee] px-5 pt-4 scrollbar-thin md:px-6">
-          <Pestanas.List className="flex min-w-max gap-6" aria-label="Secciones de la ficha">
-            <Pestanas.Trigger value="identificacion" className={clasesPestana}><UserRound className="size-4" /> Identificación</Pestanas.Trigger>
-            <Pestanas.Trigger value="metricas" className={clasesPestana}><Activity className="size-4" /> Métricas</Pestanas.Trigger>
-            <Pestanas.Trigger value="proyectos" className={clasesPestana}><BriefcaseBusiness className="size-4" /> Proyectos</Pestanas.Trigger>
-            <Pestanas.Trigger value="sanciones" className={clasesPestana}><ShieldAlert className="size-4" /> Sanciones</Pestanas.Trigger>
-          </Pestanas.List>
+          <Pestañas.List className="flex min-w-max gap-6" aria-label="Secciones de la ficha">
+            <Pestañas.Trigger value="identificacion" className={clasesPestaña}><UserRound className="size-4" /> Identificación</Pestañas.Trigger>
+            <Pestañas.Trigger value="metricas" className={clasesPestaña}><Activity className="size-4" /> Métricas</Pestañas.Trigger>
+            <Pestañas.Trigger value="proyectos" className={clasesPestaña}><BriefcaseBusiness className="size-4" /> Proyectos</Pestañas.Trigger>
+            <Pestañas.Trigger value="sanciones" className={clasesPestaña}><ShieldAlert className="size-4" /> Sanciones</Pestañas.Trigger>
+          </Pestañas.List>
         </div>
 
-        <Pestanas.Content value="identificacion" className="p-5 outline-none md:p-6">
+        <Pestañas.Content value="identificacion" className="p-5 outline-none md:p-6">
           <div className="grid gap-7 xl:grid-cols-2">
             <div>
               <h3 className="font-display text-base font-bold text-[#263746]">Información personal</h3>
@@ -141,9 +141,9 @@ export function PaginaFichaVoluntario({ voluntario, permisos, alVolver }: Propie
               <div className="mt-3 grid gap-3 text-sm sm:grid-cols-2"><p><span className="text-[#7a8893]">Nombre:</span> <span className="font-medium">{voluntario.contactoEmergencia}</span></p><p><span className="text-[#7a8893]">Teléfono:</span> <span className="font-medium">{voluntario.telefonoEmergencia}</span></p></div>
             </div>
           )}
-        </Pestanas.Content>
+        </Pestañas.Content>
 
-        <Pestanas.Content value="metricas" className="p-5 outline-none md:p-6">
+        <Pestañas.Content value="metricas" className="p-5 outline-none md:p-6">
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             <TarjetaEstadistica icono={UsersRound} etiqueta="Horas presenciales" valor={`${voluntario.horasPresenciales} h`} aclaracion="Con asistencia registrada" />
             <TarjetaEstadistica icono={Video} etiqueta="Horas virtuales" valor={`${voluntario.horasVirtuales} h`} aclaracion="Sesiones y trabajo remoto" />
@@ -161,9 +161,9 @@ export function PaginaFichaVoluntario({ voluntario, permisos, alVolver }: Propie
               </dl>
             </div>
           </div>
-        </Pestanas.Content>
+        </Pestañas.Content>
 
-        <Pestanas.Content value="proyectos" className="p-5 outline-none md:p-6">
+        <Pestañas.Content value="proyectos" className="p-5 outline-none md:p-6">
           <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div><h3 className="font-display text-base font-bold text-[#263746]">Participación en proyectos</h3><p className="mt-1 text-xs text-[#7a8893]">Responsabilidades y avance durante las distintas gestiones.</p></div>
             <span className="self-start rounded-full bg-[#e8f2f8] px-3 py-1 text-xs font-semibold text-[#155477]">{voluntario.proyectos.length} proyecto{voluntario.proyectos.length === 1 ? '' : 's'}</span>
@@ -176,9 +176,9 @@ export function PaginaFichaVoluntario({ voluntario, permisos, alVolver }: Propie
             </article>
           ))}
           </div>
-        </Pestanas.Content>
+        </Pestañas.Content>
 
-        <Pestanas.Content value="sanciones" className="p-5 outline-none md:p-6">
+        <Pestañas.Content value="sanciones" className="p-5 outline-none md:p-6">
           {!permisos.puedeVerSanciones ? (
             <div className="grid min-h-64 place-items-center text-center"><div><div className="mx-auto mb-3 grid size-12 place-items-center rounded-2xl bg-[#fff3dc] text-[#996205]"><LockKeyhole className="size-5" /></div><h3 className="font-display font-bold text-[#263746]">Sección restringida</h3><p className="mt-1 max-w-sm text-sm leading-6 text-[#71808d]">Los antecedentes disciplinarios solo están disponibles para roles autorizados.</p></div></div>
           ) : voluntario.sanciones.length === 0 ? (
@@ -186,8 +186,8 @@ export function PaginaFichaVoluntario({ voluntario, permisos, alVolver }: Propie
           ) : (
             <div className="space-y-3">{voluntario.sanciones.map((sancion) => <article key={sancion.id} className="rounded-2xl border border-amber-200 bg-amber-50/50 p-5"><div className="flex flex-wrap items-center justify-between gap-2"><h3 className="font-display font-bold text-[#563d0d]">{sancion.tipo}</h3><span className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-[#7a5a1b]">{sancion.estado}</span></div><p className="mt-2 text-sm leading-6 text-[#6d5a35]">{sancion.resumen}</p><p className="mt-3 text-xs font-medium text-[#8b7040]">{sancion.fecha} · {sancion.id}</p></article>)}</div>
           )}
-        </Pestanas.Content>
-      </Pestanas.Root>
+        </Pestañas.Content>
+      </Pestañas.Root>
     </div>
   )
 }

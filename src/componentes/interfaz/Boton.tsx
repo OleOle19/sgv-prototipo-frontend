@@ -13,11 +13,11 @@ const variantesBoton = cva(
         fantasma: 'text-[#566675] hover:bg-[#edf2f5] hover:text-[#004373]',
         amarilla: 'bg-[#ffb025] text-[#1b2b38] shadow-sm hover:bg-[#f4a514]',
       },
-      tamano: {
-        pequeno: 'h-9 px-3', medio: 'h-11 px-4', icono: 'size-10 p-0',
+      tamaño: {
+        pequeño: 'h-9 px-3', medio: 'h-11 px-4', icono: 'size-10 p-0',
       },
     },
-    defaultVariants: { variante: 'primaria', tamano: 'medio' },
+    defaultVariants: { variante: 'primaria', tamaño: 'medio' },
   },
 )
 
@@ -25,7 +25,7 @@ interface PropiedadesBoton extends AtributosBotonHtml<HTMLButtonElement>, Propie
   comoHijo?: boolean
 }
 
-export function Boton({ className, variante, tamano, comoHijo, ...propiedades }: PropiedadesBoton) {
+export function Boton({ className, variante, tamaño, comoHijo, ...propiedades }: PropiedadesBoton) {
   const Componente = comoHijo ? Ranura : 'button'
-  return <Componente className={combinarClases(variantesBoton({ variante, tamano }), className)} {...propiedades} />
+  return <Componente className={combinarClases(variantesBoton({ variante, tamaño }), className)} {...propiedades} />
 }

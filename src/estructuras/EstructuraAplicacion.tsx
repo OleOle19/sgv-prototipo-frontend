@@ -94,7 +94,7 @@ export function EstructuraAplicacion({ children, paginaActual, alNavegarMiembros
         <div className="fixed inset-0 z-50 lg:hidden">
           <button type="button" aria-label="Cerrar menú" className="absolute inset-0 bg-[#061c2c]/55 backdrop-blur-sm" onClick={() => establecerMenuMovilAbierto(false)} />
           <aside className="relative flex h-full w-[280px] flex-col bg-[#004373] shadow-2xl">
-            <Boton variante="fantasma" tamano="icono" className="absolute right-3 top-3 text-white hover:bg-white/10 hover:text-white" onClick={() => establecerMenuMovilAbierto(false)} aria-label="Cerrar menú">
+            <Boton variante="fantasma" tamaño="icono" className="absolute right-3 top-3 text-white hover:bg-white/10 hover:text-white" onClick={() => establecerMenuMovilAbierto(false)} aria-label="Cerrar menú">
               <X className="size-5" />
             </Boton>
             <ContenidoBarraLateral alNavegarMiembros={irAMiembros} />
@@ -104,15 +104,15 @@ export function EstructuraAplicacion({ children, paginaActual, alNavegarMiembros
 
       <div className="min-w-0 lg:pl-[244px]">
         <header className="sticky top-0 z-20 flex h-[72px] items-center border-b border-[#e1e8ed] bg-white/95 px-4 backdrop-blur md:px-7">
-          <Boton variante="fantasma" tamano="icono" className="mr-2 lg:hidden" onClick={() => establecerMenuMovilAbierto(true)} aria-label="Abrir menú"><Menu className="size-5" /></Boton>
+          <Boton variante="fantasma" tamaño="icono" className="mr-2 lg:hidden" onClick={() => establecerMenuMovilAbierto(true)} aria-label="Abrir menú"><Menu className="size-5" /></Boton>
           <div className="min-w-0 flex-1">
             <p className="hidden text-xs font-medium text-[#7a8893] sm:block">Sistema de Gestión de Voluntariado</p>
             <h1 className="truncate font-display text-lg font-bold text-[#172432]">{titulo}</h1>
           </div>
 
           <div className="flex items-center gap-1.5 sm:gap-3">
-            <Boton variante="fantasma" tamano="icono" className="hidden sm:inline-flex" aria-label="Buscar"><Search className="size-5" /></Boton>
-            <Boton variante="fantasma" tamano="icono" className="relative" aria-label="Notificaciones">
+            <Boton variante="fantasma" tamaño="icono" className="hidden sm:inline-flex" aria-label="Buscar"><Search className="size-5" /></Boton>
+            <Boton variante="fantasma" tamaño="icono" className="relative" aria-label="Notificaciones">
               <Bell className="size-5" /><span className="absolute right-2 top-2 size-2 rounded-full border-2 border-white bg-[#ffb025]" />
             </Boton>
             <div className="mx-1 hidden h-8 w-px bg-[#e1e8ed] sm:block" />

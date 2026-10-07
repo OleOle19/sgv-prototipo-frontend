@@ -47,7 +47,7 @@ export function FiltrosMiembros({ filtros, alCambiar, puedeBuscarDni, cantidadRe
           <SlidersHorizontal className="size-4" /> Más
           <ChevronDown className={combinarClases('size-4 transition-transform', filtrosAvanzadosAbiertos && 'rotate-180')} />
         </Boton>
-        <Boton type="button" variante="secundaria" tamano="icono" onClick={() => alCambiar(filtrosVacios)} disabled={!hayFiltrosActivos} aria-label="Limpiar filtros" title="Limpiar filtros"><RotateCcw className="size-4" /></Boton>
+        <Boton type="button" variante="secundaria" tamaño="icono" onClick={() => alCambiar(filtrosVacios)} disabled={!hayFiltrosActivos} aria-label="Limpiar filtros" title="Limpiar filtros"><RotateCcw className="size-4" /></Boton>
       </div>
 
       {filtrosAvanzadosAbiertos && (

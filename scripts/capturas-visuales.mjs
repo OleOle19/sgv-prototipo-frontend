@@ -11,8 +11,8 @@ const capturas = [
   { nombre: 'miembros-movil.png', direccion: 'http://127.0.0.1:5173/', vista: { width: 390, height: 844 } },
   { nombre: 'ficha-escritorio.png', direccion: 'http://127.0.0.1:5173/?voluntario=VOL-0248', vista: { width: 1440, height: 1100 } },
   { nombre: 'ficha-movil.png', direccion: 'http://127.0.0.1:5173/?voluntario=VOL-0248', vista: { width: 390, height: 844 } },
-  { nombre: 'metricas-escritorio.png', direccion: 'http://127.0.0.1:5173/?voluntario=VOL-0248', vista: { width: 1440, height: 1100 }, pestana: 'Métricas' },
-  { nombre: 'metricas-movil.png', direccion: 'http://127.0.0.1:5173/?voluntario=VOL-0248', vista: { width: 390, height: 844 }, pestana: 'Métricas' },
+  { nombre: 'metricas-escritorio.png', direccion: 'http://127.0.0.1:5173/?voluntario=VOL-0248', vista: { width: 1440, height: 1100 }, pestaña: 'Métricas' },
+  { nombre: 'metricas-movil.png', direccion: 'http://127.0.0.1:5173/?voluntario=VOL-0248', vista: { width: 390, height: 844 }, pestaña: 'Métricas' },
 ]
 
 for (const captura of capturas) {
@@ -20,7 +20,7 @@ for (const captura of capturas) {
   const pagina = await navegador.newPage({ viewport: captura.vista })
   await pagina.goto(captura.direccion, { waitUntil: 'domcontentloaded', timeout: 10_000 })
   await pagina.evaluate(() => document.fonts.ready)
-  if (captura.pestana) await pagina.getByRole('tab', { name: captura.pestana }).click()
+  if (captura.pestaña) await pagina.getByRole('tab', { name: captura.pestaña }).click()
   await pagina.waitForTimeout(400)
   await pagina.screenshot({ path: `tmp/screens/${captura.nombre}`, fullPage: false })
   await pagina.close()

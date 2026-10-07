@@ -176,8 +176,8 @@ export function PaginaMiembros({ permisos, alVerVoluntario }: PropiedadesPaginaM
           <div className="flex flex-col gap-3 border-t border-[#e4eaee] px-4 py-3.5 sm:flex-row sm:items-center sm:justify-between md:px-5">
             <p className="text-xs text-[#71808d]">Página <span className="font-semibold text-[#334554]">{tabla.state.pagination.pageIndex + 1}</span> de <span className="font-semibold text-[#334554]">{Math.max(1, tabla.getPageCount())}</span></p>
             <div className="flex gap-2">
-              <Boton variante="secundaria" tamano="pequeno" onClick={() => tabla.previousPage()} disabled={!tabla.getCanPreviousPage()}><ArrowLeft className="size-4" /> Anterior</Boton>
-              <Boton variante="secundaria" tamano="pequeno" onClick={() => tabla.nextPage()} disabled={!tabla.getCanNextPage()}>Siguiente <ArrowRight className="size-4" /></Boton>
+              <Boton variante="secundaria" tamaño="pequeño" onClick={() => tabla.previousPage()} disabled={!tabla.getCanPreviousPage()}><ArrowLeft className="size-4" /> Anterior</Boton>
+              <Boton variante="secundaria" tamaño="pequeño" onClick={() => tabla.nextPage()} disabled={!tabla.getCanNextPage()}>Siguiente <ArrowRight className="size-4" /></Boton>
             </div>
           </div>
         )}

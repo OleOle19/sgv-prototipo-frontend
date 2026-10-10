@@ -4,7 +4,7 @@ import type { ButtonHTMLAttributes as AtributosBotonHtml } from 'react'
 import { combinarClases } from '../../utilidades/combinarClases'
 
 const variantesBoton = cva(
-  'inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-[#ffb025]/40 disabled:pointer-events-none disabled:opacity-50',
+  'boton-sgv inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-[#ffb025]/40 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variante: {

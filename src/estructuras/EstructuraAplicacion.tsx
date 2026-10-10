@@ -27,14 +27,8 @@ const navegacion = [
 
 function Marca() {
   return (
-    <div className="flex items-center gap-3">
-      <div className="grid size-10 place-items-center rounded-xl border border-white/15 bg-white/10 font-display text-xs font-extrabold tracking-[.08em] text-[#ffd27b] shadow-sm">
-        SGV
-      </div>
-      <div>
-        <div className="font-display text-[17px] font-bold tracking-[0.08em] text-white">INCUBUNT</div>
-        <div className="text-[9px] font-medium tracking-[0.12em] text-sky-200">PROPUESTA FUNCIONAL</div>
-      </div>
+    <div className="rounded-xl bg-white p-6">
+      <img src="/marca/isologo-incubunt.png" alt="INCUBUNT: Inspira, Innova, Emprende" className="mx-auto h-auto w-[140px]" />
     </div>
   )
 }
@@ -99,7 +93,7 @@ export function EstructuraAplicacion({ children, paginaActual, alNavegarVoluntar
       )}
 
       <div className="min-w-0 lg:pl-[244px]">
-        <header className="sticky top-0 z-20 flex h-[72px] items-center border-b border-[#e1e8ed] bg-white/95 px-4 backdrop-blur md:px-7">
+        <header className="sticky top-0 z-20 flex h-[72px] items-center border-b border-[#e1e8ed] bg-white px-4 md:px-7">
           <Boton variante="fantasma" tamaño="icono" className="mr-2 lg:hidden" onClick={() => establecerMenuMovilAbierto(true)} aria-label="Abrir menú"><Menu className="size-5" /></Boton>
           <div className="min-w-0 flex-1">
             <p className="hidden text-xs font-medium text-[#7a8893] sm:block">Sistema de Gestión de Voluntariado</p>

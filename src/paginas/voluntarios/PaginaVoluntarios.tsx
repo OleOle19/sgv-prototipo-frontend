@@ -51,9 +51,9 @@ function claseResponsivaColumna(id: string) {
 
 function ElementoResumen({ icono: Icono, valor, etiqueta }: { icono: typeof UsersRound; valor: string; etiqueta: string }) {
   return (
-    <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-[#14527e] px-3.5 py-3">
-      <div className="grid size-9 shrink-0 place-items-center rounded-lg bg-[#2c638b] text-[#ffd27b]"><Icono className="size-4.5" /></div>
-      <div><div className="font-display text-lg font-bold leading-none text-white">{valor}</div><div className="mt-1 text-[11px] text-sky-100/80">{etiqueta}</div></div>
+    <div className="metrica-destacada flex items-center gap-4">
+      <div className="metrica-destacada__icono"><Icono className="size-5" /></div>
+      <div><strong className="block text-white">{valor}</strong><p>{etiqueta}</p></div>
     </div>
   )
 }
@@ -155,16 +155,17 @@ export function PaginaVoluntarios({ permisos, alVerVoluntario }: PropiedadesPagi
 
   return (
     <div className="min-w-0 animate-fade-up space-y-5">
-      <section className="relative overflow-hidden rounded-2xl bg-[#004373] px-5 py-6 text-white shadow-[0_14px_30px_rgba(0,67,115,.14)] md:px-7 md:py-7">
-        <div className="relative grid gap-6 xl:grid-cols-[minmax(0,1fr)_auto] xl:items-end">
+      <section className="cabecera-destacada px-5 py-6 text-white md:px-7 md:py-7">
+        <div className="flex flex-col gap-6">
           <div>
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[.2em] text-[#ffb025]">SGV / Voluntarios</p>
             <h2 className="font-display text-2xl font-bold tracking-[-.025em] md:text-[30px]">Buscar voluntarios</h2>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-sky-100">Consulta la ficha integral, participación y proyectos de los voluntarios.</p>
             {permisos.alcanceArea && (
               <div className="mt-4 inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/8 px-3 py-2 text-xs font-medium text-sky-50"><LockKeyhole className="size-4 text-[#ffd27b]" /> Vista limitada al área {permisos.alcanceArea}</div>
             )}
           </div>
-          <div className="grid gap-2 sm:grid-cols-3 xl:min-w-[440px]">
+          <div className="metricas-destacadas grid gap-3 sm:grid-cols-3">
             <ElementoResumen icono={UsersRound} valor={String(resumen.activos)} etiqueta="voluntarios activos" />
             <ElementoResumen icono={Clock3} valor={`${resumen.horas} h`} etiqueta="horas acumuladas" />
             <ElementoResumen icono={Activity} valor={`${resumen.participacion}%`} etiqueta="participación media" />
@@ -178,6 +179,7 @@ export function PaginaVoluntarios({ permisos, alVerVoluntario }: PropiedadesPagi
         puedeBuscarDni={permisos.puedeVerDni}
         cantidadResultados={datos.length}
         proyectosDisponibles={proyectosDisponibles}
+        areaFija={Boolean(permisos.alcanceArea)}
       />
 
       <section className="overflow-hidden rounded-2xl border border-[#dfe6eb] bg-white shadow-[0_1px_2px_rgba(20,45,63,.03)]">

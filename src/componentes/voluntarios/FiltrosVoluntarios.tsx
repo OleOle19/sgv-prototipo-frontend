@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react'
-import { ChevronDown, Filter, RotateCcw, Search, SlidersHorizontal } from 'lucide-react'
+import { ChevronDown, Filter, RotateCcw, Search, SlidersHorizontal, X } from 'lucide-react'
 import { Boton } from '../interfaz/Boton'
 import { Selector } from '../interfaz/Selector'
 import { combinarClases } from '../../utilidades/combinarClases'
@@ -15,6 +15,7 @@ interface PropiedadesFiltrosVoluntarios {
   puedeBuscarDni: boolean
   cantidadResultados: number
   proyectosDisponibles: string[]
+  areaFija?: boolean
 }
 
 const filtrosVacios: DatosFiltrosVoluntarios = {
@@ -37,6 +38,7 @@ export function FiltrosVoluntarios({
   puedeBuscarDni,
   cantidadResultados,
   proyectosDisponibles,
+  areaFija = false,
 }: PropiedadesFiltrosVoluntarios) {
   const [filtrosAvanzadosAbiertos, establecerFiltrosAvanzadosAbiertos] = useState(false)
   const [participacionTemporal, establecerParticipacionTemporal] = useState(filtros.participacionMinima)
@@ -67,6 +69,16 @@ export function FiltrosVoluntarios({
       alCambiar({ ...filtros, participacionMinima: participacionTemporal })
     }
   }
+
+  const etiquetasActivas = [
+    ...(filtros.busqueda ? [{ texto: `Búsqueda: ${filtros.busqueda}`, quitar: () => alCambiar({ ...filtros, busqueda: '' }) }] : []),
+    ...(!areaFija && filtros.area !== 'Todas' ? [{ texto: `Área: ${filtros.area}`, quitar: () => alCambiar({ ...filtros, area: 'Todas' }) }] : []),
+    ...(filtros.estado !== 'Todos' ? [{ texto: `Estado: ${filtros.estado}`, quitar: () => alCambiar({ ...filtros, estado: 'Todos' }) }] : []),
+    ...(filtros.periodoIngreso !== 'Todos' ? [{ texto: `Ingreso: ${filtros.periodoIngreso}`, quitar: () => alCambiar({ ...filtros, periodoIngreso: 'Todos' }) }] : []),
+    ...(filtros.proyecto !== 'Todos los proyectos' ? [{ texto: `Proyecto: ${filtros.proyecto}`, quitar: () => alCambiar({ ...filtros, proyecto: 'Todos los proyectos' }) }] : []),
+    ...(filtros.participacionMinima ? [{ texto: `Participación ≥ ${filtros.participacionMinima}%`, quitar: () => { establecerParticipacionTemporal(0); alCambiar({ ...filtros, participacionMinima: 0 }) } }] : []),
+    ...(filtros.mostrarRetirados ? [{ texto: 'Retirados incluidos', quitar: () => cambiarVisibilidadRetirados(false) }] : []),
+  ]
 
   return (
     <section className="rounded-2xl border border-[#dfe6eb] bg-white p-4 shadow-[0_1px_2px_rgba(20,45,63,.03)] md:p-5" aria-label="Filtros de voluntarios">
@@ -116,6 +128,17 @@ export function FiltrosVoluntarios({
           ><RotateCcw className="size-4" /></Boton>
         </div>
       </div>
+
+      {etiquetasActivas.length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-2 border-t border-[#e7edf0] pt-4" aria-label="Filtros activos">
+          {etiquetasActivas.map(({ texto, quitar }) => (
+            <button key={texto} type="button" onClick={quitar} aria-label={`Quitar filtro ${texto}`}
+              className="inline-flex min-h-9 max-w-full items-center gap-2 rounded-full border border-[#cadce8] bg-[#e8f2f8] px-3 py-1.5 text-left text-xs font-medium text-[#004373] hover:border-[#004373] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004373]">
+              <span className="break-words">{texto}</span><X className="size-3.5 shrink-0" aria-hidden="true" />
+            </button>
+          ))}
+        </div>
+      )}
 
       {filtrosAvanzadosAbiertos && (
         <div id="filtros-avanzados-voluntarios" className="mt-4 grid gap-4 border-t border-[#e7edf0] pt-4 md:grid-cols-2 xl:grid-cols-[minmax(220px,1fr)_minmax(260px,1.2fr)_minmax(220px,.8fr)]">

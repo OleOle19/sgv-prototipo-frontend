@@ -13,7 +13,7 @@ const capturas = [
   { nombre: 'ficha-escritorio.png', direccion: 'http://127.0.0.1:5173/?voluntario=VOL-0248', vista: { width: 1440, height: 1100 } },
   { nombre: 'ficha-movil.png', direccion: 'http://127.0.0.1:5173/?voluntario=VOL-0248', vista: { width: 390, height: 844 } },
   { nombre: 'metricas-escritorio.png', direccion: 'http://127.0.0.1:5173/?voluntario=VOL-0248', vista: { width: 1440, height: 1100 }, pestaña: 'Métricas' },
-  { nombre: 'metricas-movil.png', direccion: 'http://127.0.0.1:5173/?voluntario=VOL-0248', vista: { width: 390, height: 844 }, seccionMovil: 'Métricas' },
+  { nombre: 'metricas-movil.png', direccion: 'http://127.0.0.1:5173/?voluntario=VOL-0248', vista: { width: 390, height: 844 }, seccionMovil: 'Métricas', paginaCompleta: true },
 ]
 
 for (const captura of capturas) {
@@ -26,7 +26,7 @@ for (const captura of capturas) {
     await pagina.locator('details').filter({ hasText: captura.seccionMovil }).locator('summary').click()
     await pagina.locator('details').filter({ hasText: captura.seccionMovil }).scrollIntoViewIfNeeded()
   }
-  await pagina.waitForTimeout(400)
+  await pagina.evaluate(() => Promise.all(document.getAnimations().map((animacion) => animacion.finished.catch(() => {}))))
   await pagina.screenshot({ path: `tmp/screens/${captura.nombre}`, fullPage: captura.paginaCompleta ?? false })
   await pagina.close()
 }

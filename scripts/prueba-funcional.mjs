@@ -22,6 +22,11 @@ try {
     'Andrea Valdivia Rojas',
   ])
 
+  await pagina.getByRole('combobox', { name: 'Área', exact: true }).click()
+  await pagina.getByRole('option', { name: 'TI', exact: true }).click()
+  await pagina.getByRole('button', { name: 'Quitar filtro Área: TI', exact: true }).click()
+  await pagina.getByText('6 resultados', { exact: true }).waitFor()
+
   const anchoRaizAntesDeInteractuar = await pagina.locator('#root').evaluate((elemento) => elemento.getBoundingClientRect().width)
   await pagina.getByRole('button', { name: 'Más', exact: true }).click()
   await pagina.getByRole('combobox', { name: 'Área' }).click()
@@ -62,6 +67,8 @@ try {
   await pagina.getByRole('tabpanel', { name: 'Sensible' }).getByText('Grupo sanguíneo', { exact: true }).waitFor()
   await pagina.getByRole('tab', { name: 'Métricas' }).click()
   await pagina.getByRole('tabpanel', { name: 'Métricas' }).getByText('Distribución de los últimos seis meses.', { exact: true }).waitFor()
+  await pagina.getByRole('button', { name: /^Sep: / }).click()
+  await pagina.locator('[aria-live="polite"]').getByText('Sep', { exact: true }).waitFor()
   await pagina.getByRole('tab', { name: 'Proyectos' }).click()
   await pagina.getByRole('button', { name: /Sistema de Gestión de Voluntariado/ }).click()
   await pagina.getByRole('heading', { name: 'Sistema de Gestión de Voluntariado' }).waitFor()

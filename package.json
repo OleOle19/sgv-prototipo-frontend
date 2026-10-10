@@ -9,6 +9,7 @@
     "lint": "oxlint",
     "verificar": "npm run lint && npm run build",
     "prueba:funcional": "node scripts/prueba-funcional.mjs",
+    "prueba:estabilidad": "node scripts/prueba-estabilidad-ui.mjs",
     "capturas:visuales": "node scripts/capturas-visuales.mjs",
     "preview": "vite preview"
   },

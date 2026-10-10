@@ -1,15 +1,19 @@
-export type EstadoVoluntario = 'Activo' | 'Inactivo' | 'Suspendido'
-export type AreaVoluntario = 'TI' | 'GTH' | 'Marketing' | 'PMO' | 'Sostenibilidad'
+export type EstadoVoluntario = 'Activo' | 'Retirado' | 'Suspendido'
+export type AreaVoluntario = 'TI' | 'MKT' | 'LTK/FNZ' | 'PMO' | 'GTH'
 
 export interface ResumenVoluntario {
   id: string
   iniciales: string
   nombre: string
+  apellidos: string
   documento: string
   email: string
   area: AreaVoluntario
   cargo: string
-  gestion: string
+  carrera: string
+  ciclo: string
+  periodoIngreso: string
+  periodoRetiro?: string
   estado: EstadoVoluntario
   fechaIngreso: string
   participacion: number
@@ -39,6 +43,7 @@ export interface HorasMensuales {
 }
 
 export interface DetalleVoluntario extends ResumenVoluntario {
+  codigoUniversitario: string
   telefono: string
   fechaNacimiento: string
   direccion: string
@@ -46,8 +51,6 @@ export interface DetalleVoluntario extends ResumenVoluntario {
   telefonoEmergencia: string
   tipoSangre: string
   universidad: string
-  carrera: string
-  ciclo: string
   habilidades: string[]
   horas: number
   horasPresenciales: number
@@ -59,13 +62,14 @@ export interface DetalleVoluntario extends ResumenVoluntario {
   sanciones: RegistroSancion[]
 }
 
-export interface FiltrosMiembros {
+export interface FiltrosVoluntarios {
   busqueda: string
   area: 'Todas' | AreaVoluntario
   estado: 'Todos' | EstadoVoluntario
-  gestion: string
-  busquedaProyecto: string
+  periodoIngreso: string
+  proyecto: string
   participacionMinima: number
+  mostrarRetirados: boolean
 }
 
 export type RolAcceso = 'Presidencia' | 'Dirección GTH' | 'Dirección de área'

@@ -2,7 +2,7 @@
 
 Propuesta funcional y responsive para los entregables de Frontend del Sistema de Gestión de Voluntariado de INCUBUNT:
 
-- búsqueda y filtros de miembros;
+- búsqueda y filtros de voluntarios;
 - resumen ejecutivo del directorio;
 - ficha integral del voluntario;
 - métricas presenciales/virtuales e histórico mensual;
@@ -72,12 +72,14 @@ public/            Recursos estáticos públicos
 
 ## Recorrido sugerido para la demostración
 
-1. Probar la búsqueda por nombre, los filtros combinables y los filtros avanzados por proyecto y participación.
+1. Probar la búsqueda por nombre, los filtros combinables y el selector de proyecto.
 2. Buscar el DNI ficticio exacto `10002481` con el rol Dirección GTH.
-3. Abrir una ficha y recorrer Identificación, Métricas (incluido el histórico mensual), Proyectos y Sanciones.
-4. Cambiar el rol desde el menú superior a Dirección de área.
-5. Comprobar que el directorio se limita a TI y oculta DNI, datos sensibles y sanciones.
-6. Reducir la ventana para revisar la versión móvil.
+3. Activar «Incluir voluntarios retirados» y comprobar que no aparecen antes de marcar la casilla.
+4. Abrir una ficha y recorrer Identificación, Sensible, Métricas, Proyectos y Sanciones.
+5. Seleccionar un proyecto desde la ficha y comprobar que abre su vista resumida.
+6. Cambiar el rol desde el menú superior a Dirección de área.
+7. Comprobar que el directorio se limita a TI y oculta DNI, datos sensibles y sanciones.
+8. Reducir la ventana para revisar las tarjetas y los desplegables verticales de la ficha.
 
 La ficha de Andrea también puede abrirse directamente con `?voluntario=VOL-0248`.
 

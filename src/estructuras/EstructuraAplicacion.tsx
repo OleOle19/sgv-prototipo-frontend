@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from 'react'
 import {
   Bell, ChevronDown, ClipboardCheck, FileBarChart, FolderKanban, Gauge,
-  HeartHandshake, Menu, Search, Settings, ShieldCheck, UserRound, UsersRound, X,
+  HeartHandshake, Menu, Search, Settings, UserRound, UsersRound, X,
 } from 'lucide-react'
 import * as MenuDesplegable from '@radix-ui/react-dropdown-menu'
 import { combinarClases } from '../utilidades/combinarClases'
@@ -10,15 +10,15 @@ import type { RolAcceso } from '../tipos/voluntario'
 
 interface PropiedadesEstructuraAplicacion {
   children: ReactNode
-  paginaActual: 'miembros' | 'ficha'
-  alNavegarMiembros: () => void
+  paginaActual: 'voluntarios' | 'ficha' | 'proyecto'
+  alNavegarVoluntarios: () => void
   rol: RolAcceso
   alCambiarRol: (rol: RolAcceso) => void
 }
 
 const navegacion = [
   { etiqueta: 'Resumen', icono: Gauge, deshabilitado: true },
-  { etiqueta: 'Miembros', icono: UsersRound, activo: true },
+  { etiqueta: 'Voluntarios', icono: UsersRound, activo: true },
   { etiqueta: 'Proyectos', icono: FolderKanban, deshabilitado: true },
   { etiqueta: 'Actividades', icono: ClipboardCheck, deshabilitado: true },
   { etiqueta: 'Asistencia', icono: HeartHandshake, deshabilitado: true },
@@ -39,7 +39,7 @@ function Marca() {
   )
 }
 
-function ContenidoBarraLateral({ alNavegarMiembros }: { alNavegarMiembros: () => void }) {
+function ContenidoBarraLateral({ alNavegarVoluntarios }: { alNavegarVoluntarios: () => void }) {
   return (
     <>
       <div className="px-5 pb-8 pt-6"><Marca /></div>
@@ -51,7 +51,7 @@ function ContenidoBarraLateral({ alNavegarMiembros }: { alNavegarMiembros: () =>
               key={etiqueta}
               type="button"
               disabled={deshabilitado}
-              onClick={activo ? alNavegarMiembros : undefined}
+              onClick={activo ? alNavegarVoluntarios : undefined}
               className={combinarClases(
                 'flex h-11 w-full items-center gap-3 rounded-xl px-3 text-sm transition',
                 activo ? 'bg-white/12 font-semibold text-white shadow-[inset_3px_0_0_#ffb025]' : 'text-sky-100/70 hover:bg-white/7 hover:text-white',
@@ -64,10 +64,6 @@ function ContenidoBarraLateral({ alNavegarMiembros }: { alNavegarMiembros: () =>
           ))}
         </div>
       </nav>
-      <div className="mx-4 mb-4 rounded-2xl border border-white/10 bg-white/7 p-3.5">
-        <div className="mb-2 flex items-center gap-2 text-xs font-semibold text-white"><ShieldCheck className="size-4 text-[#ffb025]" /> Entorno de propuesta</div>
-        <p className="text-[11px] leading-5 text-sky-100/65">Los datos mostrados son ficticios y sirven para validar la experiencia.</p>
-      </div>
       <button type="button" disabled className="mx-3 mb-5 flex h-11 items-center gap-3 rounded-xl px-3 text-sm text-sky-100/60">
         <Settings className="size-[18px]" /> Configuración
       </button>
@@ -75,19 +71,19 @@ function ContenidoBarraLateral({ alNavegarMiembros }: { alNavegarMiembros: () =>
   )
 }
 
-export function EstructuraAplicacion({ children, paginaActual, alNavegarMiembros, rol, alCambiarRol }: PropiedadesEstructuraAplicacion) {
+export function EstructuraAplicacion({ children, paginaActual, alNavegarVoluntarios, rol, alCambiarRol }: PropiedadesEstructuraAplicacion) {
   const [menuMovilAbierto, establecerMenuMovilAbierto] = useState(false)
-  const titulo = paginaActual === 'miembros' ? 'Miembros' : 'Ficha de voluntario'
+  const titulo = paginaActual === 'voluntarios' ? 'Voluntarios' : paginaActual === 'proyecto' ? 'Proyecto' : 'Ficha de voluntario'
 
-  const irAMiembros = () => {
+  const irAVoluntarios = () => {
     establecerMenuMovilAbierto(false)
-    alNavegarMiembros()
+    alNavegarVoluntarios()
   }
 
   return (
     <div className="min-h-screen bg-[#f3f6f8]">
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-[244px] flex-col bg-[#004373] lg:flex">
-        <ContenidoBarraLateral alNavegarMiembros={irAMiembros} />
+        <ContenidoBarraLateral alNavegarVoluntarios={irAVoluntarios} />
       </aside>
 
       {menuMovilAbierto && (
@@ -97,7 +93,7 @@ export function EstructuraAplicacion({ children, paginaActual, alNavegarMiembros
             <Boton variante="fantasma" tamaño="icono" className="absolute right-3 top-3 text-white hover:bg-white/10 hover:text-white" onClick={() => establecerMenuMovilAbierto(false)} aria-label="Cerrar menú">
               <X className="size-5" />
             </Boton>
-            <ContenidoBarraLateral alNavegarMiembros={irAMiembros} />
+            <ContenidoBarraLateral alNavegarVoluntarios={irAVoluntarios} />
           </aside>
         </div>
       )}

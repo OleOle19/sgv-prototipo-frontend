@@ -23,7 +23,7 @@ Orden interno recomendado:
 2. `ResumenVoluntario` para las filas del listado.
 3. `ParticipacionProyecto`, `RegistroSancion` y `HorasMensuales`.
 4. `DetalleVoluntario` extendiendo el resumen, incluida la separación de horas por modalidad.
-5. `FiltrosMiembros`.
+5. `FiltrosVoluntarios`.
 6. `RolAcceso` y `PermisosAutorizacion`.
 
 La razón es sencilla: los componentes deben adaptarse al contrato de datos, no inventar el contrato mientras se dibuja la pantalla.
@@ -75,20 +75,20 @@ Verifica escritorio y móvil antes de incorporar las páginas.
 
 ## 7. Implementar el directorio
 
-Primero crea `src/componentes/voluntarios/FiltrosMiembros.tsx` y conecta solamente un campo a la vez:
+Primero crea `src/componentes/voluntarios/FiltrosVoluntarios.tsx` y conecta solamente un campo a la vez:
 
 1. búsqueda por nombre;
 2. DNI exacto condicionado por permiso;
 3. área;
 4. estado;
-5. gestión;
-6. panel avanzado por proyecto y participación mínima;
-7. limpiar filtros.
+5. período de ingreso;
+6. selector de proyecto, participación mínima y casilla para incluir retirados;
+7. restablecer filtros.
 
-Luego crea `src/paginas/voluntarios/PaginaMiembros.tsx`:
+Luego crea `src/paginas/voluntarios/PaginaVoluntarios.tsx`:
 
 1. alcance del rol y resumen ejecutivo;
-2. filtrado;
+2. filtrado y orden por estado y apellidos;
 3. columnas tipadas;
 4. TanStack Table;
 5. tabla de escritorio;
@@ -103,11 +103,12 @@ En `src/paginas/voluntarios/PaginaFichaVoluntario.tsx` construye:
 1. cabecera e identidad;
 2. aviso de información restringida;
 3. pestaña Identificación;
-4. pestaña Métricas, tarjetas por modalidad y gráfico mensual;
-5. pestaña Proyectos;
-6. pestaña Sanciones;
-7. estados sin información;
-8. sustitución de valores sensibles según permisos.
+4. pestaña Sensible;
+5. pestaña Métricas, tarjetas por modalidad y gráfico mensual;
+6. pestaña Proyectos;
+7. pestaña Sanciones;
+8. desplegables verticales para móvil;
+9. estados sin información y sustitución de valores sensibles según permisos.
 
 ## 9. Conectar el flujo
 
@@ -115,9 +116,10 @@ Finalmente tipeas `src/Aplicacion.tsx` para manejar:
 
 1. rol activo;
 2. voluntario seleccionado;
-3. navegación listado-ficha;
+3. navegación listado-ficha-proyecto;
 4. enlace directo mediante `?voluntario=...`;
-5. retorno seguro al listado al perder alcance.
+5. retorno seguro al listado al perder alcance;
+6. `src/paginas/voluntarios/PaginaProyecto.tsx` para abrir el proyecto seleccionado.
 
 ## 10. Verificación final
 

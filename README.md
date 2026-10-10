@@ -10,9 +10,11 @@ Prototipo frontend del Sistema de Gestión de Voluntariado de INCUBUNT. Incluye 
 - Vistas simuladas para Presidencia, Dirección GTH y Dirección de área.
 - Interfaz adaptable a escritorio, tableta y móvil.
 
-## Instalación
+## Vista previa
 
 ![Directorio de voluntarios](docs/capturas/voluntarios-escritorio.png)
+
+## Instalación
 
 Requisitos: Git y Node.js 22.12 o superior compatible con Vite 8.
 

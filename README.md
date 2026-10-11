@@ -55,15 +55,3 @@ public/          Recursos estáticos
 scripts/         Pruebas y capturas
 docs/            Documentación técnica
 ```
-
-## Alcance
-
-Los datos son ficticios y los permisos se simulan en el navegador. Esta versión no implementa autenticación, autorización de servidor ni persistencia. No debe utilizarse con información personal real.
-
-## Colaboración
-
-Trabaja en una rama y envía un pull request. Antes de solicitar revisión, ejecuta `npm run verificar` y las pruebas correspondientes. Mantén `main` compilable.
-
-Consulta las [decisiones técnicas](docs/DECISIONES.md) y la [guía de implementación](docs/GUIA_DE_TIPEO.md).
-
-Los [componentes visuales e interacciones](docs/ACTUALIZACION_VISUAL.md) se documentan por separado.

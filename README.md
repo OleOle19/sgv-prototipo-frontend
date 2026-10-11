@@ -55,7 +55,3 @@ public/          Recursos estáticos
 scripts/         Pruebas y capturas
 docs/            Documentación técnica
 ```
-
-## Alcance
-
-Los datos son ficticios y los permisos se simulan en el navegador. Esta versión no implementa autenticación, autorización de servidor ni persistencia. No debe utilizarse con información personal real.

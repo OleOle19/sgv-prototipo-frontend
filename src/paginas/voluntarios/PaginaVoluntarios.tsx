@@ -13,6 +13,7 @@ import {
 import { FotoPerfil } from '../../componentes/interfaz/FotoPerfil'
 import { Boton } from '../../componentes/interfaz/Boton'
 import { InsigniaEstado } from '../../componentes/interfaz/InsigniaEstado'
+import { IndicadorParticipacion } from '../../componentes/interfaz/IndicadorParticipacion'
 import { FiltrosVoluntarios } from '../../componentes/voluntarios/FiltrosVoluntarios'
 import { voluntarios } from '../../datos/voluntarios'
 import type {
@@ -122,10 +123,7 @@ export function PaginaVoluntarios({ permisos, alVerVoluntario }: PropiedadesPagi
     ayudanteColumnas.accessor('participacion', {
       header: 'Participación',
       cell: ({ row: fila }) => (
-        <div className="flex min-w-24 items-center gap-2">
-          <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[#e1e8ec]"><div className="h-full rounded-full bg-[#ffb025]" style={{ width: `${fila.original.participacion}%` }} /></div>
-          <span className="text-xs font-semibold text-[#536473]">{fila.original.participacion}%</span>
-        </div>
+        <IndicadorParticipacion porcentaje={fila.original.participacion} />
       ),
     }),
     ayudanteColumnas.accessor('estado', { header: 'Estado', cell: ({ row: fila }) => <InsigniaEstado estado={fila.original.estado} /> }),
@@ -209,7 +207,8 @@ export function PaginaVoluntarios({ permisos, alVerVoluntario }: PropiedadesPagi
               <div className="min-w-0">
                 <h3 className="truncate text-sm font-semibold text-[#263746]">{fila.original.nombre}</h3>
                 <p className="truncate text-xs text-[#71808d]">{fila.original.email}</p>
-                <p className="mt-1 text-xs text-[#71808d]">{fila.original.area} · {fila.original.participacion}%</p>
+                <p className="mt-1 text-xs text-[#71808d]">{fila.original.area}</p>
+                <div className="mt-2"><IndicadorParticipacion porcentaje={fila.original.participacion} /></div>
               </div>
               <Boton variante="secundaria" tamaño="pequeño" className="col-span-2 justify-center min-[430px]:col-span-1" onClick={() => alVerVoluntario(fila.original.id)}>
                 Ver más <ChevronRight className="size-4" />

@@ -15,6 +15,12 @@ La navegación es una propuesta local pendiente de la plantilla oficial. Los cam
 5. **Movimiento:** se limita a entradas breves y barras de la gráfica. No se transforman los contenedores generales o el logo. Con `prefers-reduced-motion`, las animaciones y transiciones se desactivan.
 6. **Pruebas:** compilar, revisar tipos y ejecutar las pruebas con el servidor de desarrollo activo. Las pruebas de navegador incluyen los nuevos controles y capturan las pantallas cuando las animaciones terminan.
 
+## Participación segmentada
+
+`src/componentes/interfaz/IndicadorParticipacion.tsx` sustituye la barra continua del directorio en escritorio y móvil. Cada uno de los diez segmentos representa diez puntos porcentuales; el último puede quedar parcialmente lleno. Los segmentos no alteran el valor: un 84 % ocupa ocho completos y cuatro décimas del noveno.
+
+El control expone `role="progressbar"`, `aria-valuenow`, mínimo y máximo, y muestra el número junto a los segmentos. Las clases `participacion-segmentada` en `src/estilos.css` definen el estilo y una entrada breve que se desactiva con movimiento reducido.
+
 ## Dependencias
 
 Los indicadores son SVG/CSS propios. Sonner se incorporó únicamente al sprint 2, siguiendo el patrón de notificaciones documentado por [shadcn/ui](https://ui.shadcn.com/docs/components/radix/sonner) y la [documentación de Sonner](https://sonner.emilkowal.ski/).

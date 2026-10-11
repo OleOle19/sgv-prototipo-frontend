@@ -12,6 +12,9 @@ try {
     .evaluateAll((elementos) => elementos.map((elemento) => getComputedStyle(elemento).backdropFilter))
   assert.ok(efectosMetricas.every((efecto) => efecto === 'none'), 'Las métricas no deben usar desenfoque de fondo')
   assert.equal(await pagina.getByRole('columnheader', { name: 'DNI' }).count(), 0)
+  const indicador = pagina.locator('tbody tr').filter({ hasText: 'Diego García Núñez' }).getByRole('progressbar', { name: 'Participación', exact: true })
+  assert.equal(await indicador.getAttribute('aria-valuenow'), '84')
+  assert.equal(await indicador.locator('.participacion-segmentada__tramo').count(), 10)
 
   const nombresPrimeraPagina = await pagina.locator('tbody tr td:first-child .font-semibold').allTextContents()
   assert.deepEqual(nombresPrimeraPagina, [

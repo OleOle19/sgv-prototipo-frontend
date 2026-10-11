@@ -87,6 +87,12 @@ main > section, main > div { animation: aparecer-sgv 240ms ease-out; }
 .indicador-circular figcaption p { margin-top: 5px; color: #657381; font-size: 12px; line-height: 1.7; }
 .indicador-circular__arco { transition: stroke-dashoffset 400ms ease; }
 .barra-horas { animation: crecer-barra 420ms ease-out both; transform-origin: bottom; }
+.participacion-segmentada { display: flex; align-items: center; gap: 8px; min-width: 96px; max-width: 100%; }
+.participacion-segmentada__tramos { display: flex; flex: 1; gap: 2px; min-width: 58px; }
+.participacion-segmentada__tramo { display: block; flex: 1; height: 9px; overflow: hidden; border-radius: 2px; background: #e1e8ec; }
+.participacion-segmentada__relleno { display: block; height: 100%; transform-origin: left; animation: participacion-entrar 360ms ease-out; }
+.participacion-segmentada strong { flex-shrink: 0; border-radius: 6px; background: #e8f2f8; padding: 4px 6px; color: #004373; font-size: 11px; font-variant-numeric: tabular-nums; }
+@keyframes participacion-entrar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes crecer-barra { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }

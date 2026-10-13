@@ -236,7 +236,7 @@ export function PaginaFichaVoluntario({ voluntario, permisos, alVolver, alVerPro
       </div>
 
       <Pestañas.Root defaultValue="identificacion" className="hidden rounded-2xl border border-[#dfe6eb] bg-white shadow-[0_1px_2px_rgba(20,45,63,.03)] md:block">
-        <div className="overflow-x-auto border-b border-[#e4eaee] px-5 pt-4 scrollbar-thin md:px-6">
+        <div className="overflow-x-auto border-b border-[#e4eaee] px-5 pt-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:px-6">
           <Pestañas.List className="flex min-w-max gap-6" aria-label="Secciones de la ficha">
             <Pestañas.Trigger value="identificacion" className={clasesPestaña}><UserRound className="size-4" /> Identificación</Pestañas.Trigger>
             <Pestañas.Trigger value="sensible" className={clasesPestaña}><HeartPulse className="size-4" /> Sensible</Pestañas.Trigger>

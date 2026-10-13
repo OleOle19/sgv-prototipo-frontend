@@ -208,6 +208,7 @@ export function PaginaVoluntarios({ permisos, alVerVoluntario }: PropiedadesPagi
                 <h3 className="truncate text-sm font-semibold text-[#263746]">{fila.original.nombre}</h3>
                 <p className="truncate text-xs text-[#71808d]">{fila.original.email}</p>
                 <p className="mt-1 text-xs text-[#71808d]">{fila.original.area}</p>
+                <p className="mt-1 truncate text-xs text-[#71808d]">{fila.original.carrera} · {fila.original.ciclo}</p>
                 <div className="mt-2"><IndicadorParticipacion porcentaje={fila.original.participacion} /></div>
               </div>
               <Boton variante="secundaria" tamaño="pequeño" className="col-span-2 justify-center min-[430px]:col-span-1" onClick={() => alVerVoluntario(fila.original.id)}>
